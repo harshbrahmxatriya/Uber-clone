@@ -4,8 +4,29 @@ import  "mapbox-gl/dist//mapbox-gl.css"
 import Map from './components/Map'
 import Profilepic from '../public/Profilepic.png'
 import Link from 'next/link'
+import  {useState, useEffect } from 'react'
+import {auth } from '../firebase'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { useRouter } from 'next/router'
 
-  export default function Home() {
+export default function Home() {
+
+  const [user, setUser] = useState(null)
+  const router = useRouter()
+
+  useEffect(()=> {
+    return onAuthStateChanged(auth, user=>{
+      if(user) {
+        setUser({
+          name: user.displayName,
+          photo: user.photoURL,
+        })
+      }else {
+        setUser(null)
+        router.push('/login')
+      }
+    })
+  }, [])
   
   return (
     <Wrapper>
@@ -15,8 +36,8 @@ import Link from 'next/link'
           
            <UberLogo src="https://i.ibb.co/84stgjq/uber-technologies-new-20218114.jpg" />
           <Profile>
-          <Name> Harsh Brahmxatriya </Name>
-          <UserImage src="https://i.ibb.co/C7KsR3b/pic.png" />
+          <Name> {user && user.name} </Name>
+          <UserImage src={user && user.photoURL} onClick={() => signOut(auth)} />
           </Profile>
         </Header>
         <ActionButtons>
@@ -64,7 +85,7 @@ const Name = tw.div`
 `
 
 const UserImage = tw.img`
- h-20 w-20 rounded-full border border-gray-200 p-px
+ h-20 w-20 rounded-full border border-gray-200 p-px cursor-pointer
 `
 const ActionButtons = tw.div`
   flex
