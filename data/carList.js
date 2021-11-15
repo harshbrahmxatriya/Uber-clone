@@ -1,7 +1,7 @@
 export const carList = [
   {
     imgUrl: 'https://i.ibb.co/cyvcpfF/uberx.png',
-    service: 'UberX',
+    service: 'UberGo',
     multiplier: 1,
   },
   {
@@ -10,18 +10,18 @@ export const carList = [
     multiplier: 1.5,
   },
   {
-    imgUrl: 'https://i.ibb.co/Xx4G91m/uberblack.png',
-    service: 'Black',
+    imgUrl: 'https://i.ibb.co/1nStPWT/uberblacksuv.png',
+    service: 'Uber SUV',
     multiplier: 2,
   },
   {
     imgUrl: 'https://i.ibb.co/cyvcpfF/uberx.png',
-    service: 'Comfort',
+    service: 'Premier',
     multiplier: 1.2,
   },
   {
-    imgUrl: ' https://i.ibb.co/1nStPWT/uberblacksuv.png',
-    service: 'Black SUV',
+    imgUrl: ' https://i.ibb.co/cyvcpfF/uberx.png',
+    service: 'UberGo Rentals',
     multiplier: 2.8,
   }
 ]
