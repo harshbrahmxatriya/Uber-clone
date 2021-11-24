@@ -20,7 +20,7 @@ export default function Home() {
         
         setUser({
           name: user.displayName,
-          photo: user.photoURL,
+          photoURL: user.photoURL,
         })
         console.log(user.photoURL)
       }else {
